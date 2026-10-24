@@ -1,7 +1,9 @@
 package main;
 
+import gui.VentanaPrincipal;
+
 public class Main {
-	private void Main() {
-		System.out.println("hola");
+	public static void main(String[] args) {
+		new VentanaPrincipal();	
 	}
 }
