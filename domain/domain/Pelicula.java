@@ -22,7 +22,7 @@ public class Pelicula extends Director {
 	protected Director director;
 	protected Actor actor; 
 	
-	public Pelicula(int codigoPeli, String sinopsis, String nombrePeli, double duracion, Genero genero,Genero generoSecundario, int rating) {
+	public Pelicula(int codigoPeli, String sinopsis, String nombrePeli, double duracion, Genero genero,Genero generoSecundario, int rating, LocalDate fecha) {
 		super(int codigoDir, String nombreDir, String apellidos, String pais);
 		this.codigoDir = codigoDir;
 		this.sinopsis = sinopsis;
