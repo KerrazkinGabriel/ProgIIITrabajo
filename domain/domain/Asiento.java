@@ -44,7 +44,9 @@ public class Asiento {
 		this.paraDiscapacitados = paraDiscapacitados;
 	}
 	
-	
+	public TipoAsiento getTipoAsiento() {
+		return tipoAsiento;
+	}
 	//hashCode/equals
 	@Override
 	public int hashCode() {
