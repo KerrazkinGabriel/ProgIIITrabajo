@@ -1,31 +1,26 @@
 package gui;
 
-import javax.swing.JButton;
+import java.awt.GridLayout;
+
 import javax.swing.JFrame;
-import javax.swing.JLabel;
+import javax.swing.JPanel;
 
 public class VentanaPrincipal extends JFrame {
 
+	/**
+	 * 
+	 */
 	private static final long serialVersionUID = 1L;
 	
-	JButton izq;
-	JButton dch;
-	JLabel imagen;
-	
-	public VentanaPrincipal () {
-		super("CinePrincipal");
+	public VentanaPrincipal() {
+		this.setTitle("MenuPrincipal");
+		this.setSize(1080,920);
+		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
 		
-		setLayout(null);
+		//panel
+		JPanel panel = new JPanel(new GridLayout(3,3));
 		
-		izq = new JButton("←");
-		izq.setBounds(10, 130, 60, 30); // Nos sirve para editar el tamaño del botón
-		dch = new JButton("→");
-		dch.setBounds(815, 130, 60, 30); 
-		
-		imagen = new JLabel();
-		
-		add(izq);
-		add(dch);
+		setVisible(true);
 	}
 	
 }
