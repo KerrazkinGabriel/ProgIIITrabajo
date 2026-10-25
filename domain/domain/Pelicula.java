@@ -2,13 +2,13 @@ package domain;
 
 import java.time.LocalDate;
 
-public class Pelicula extends Director {
+public class Pelicula extends Persona {
 	
 	public enum Genero {
 		ACCION, COMEDIA, TERROR, CIENCIA_FICCION, FANTASIA, ROMANCE, DRAMA, SUSPENSO,AVENTURA;
 	}
 	
-	private int codigoPelicula;
+	private int codigoPeli;
 	private String sinopsis;
 	private String nombrePeli;
 	private double duracion; // En horas
@@ -22,24 +22,25 @@ public class Pelicula extends Director {
 	protected Director director;
 	protected Actor actor; 
 	
-	public Pelicula(int codigoPeli, String sinopsis, String nombrePeli, double duracion, Genero genero,Genero generoSecundario, int rating, LocalDate fecha) {
+	public Pelicula(int codigoPeli, String sinopsis, String nombrePeli, double duracion, Genero genero, Genero generoSecundario, int rating, LocalDate fecha) {
 		super(int codigoDir, String nombreDir, String apellidos, String pais);
-		this.codigoDir = codigoDir;
+		this.codigoPeli = codigoPeli;
 		this.sinopsis = sinopsis;
 		this.nombrePeli = nombrePeli;
 		this.duracion = duracion;
-		this.genero = genero;
+		this.genero = getGenero();
+		this.generoSecundario = getGeneroSecundario();
 		this.rating = rating;
 		this.fecha = LocalDate.of(anyo,mes,dia);
 	}
 
 	
-	public int getCodigoPelicula() {
-		return codigoPelicula;
+	public int getCodigoPeli() {
+		return codigoPeli;
 	}
 
-	public void setCodigoPelicula(int codigoPelicula) {
-		this.codigoPelicula = codigoPelicula;
+	public void setCodigoPelicula(int codigoPeli) {
+		this.codigoPeli = codigoPeli;
 	}
 
 	public String getSinopsis() {
@@ -108,7 +109,7 @@ public class Pelicula extends Director {
 
 	@Override
 	public String toString() {
-		return "Pelicula [codigoPelicula=" + codigoPelicula + ", sinopsis=" + sinopsis + ", nombrePeli=" + nombrePeli
+		return "Pelicula [codigoPeli=" + codigoPeli + ", sinopsis=" + sinopsis + ", nombrePeli=" + nombrePeli
 				+ ", duracion=" + duracion + ", genero=" + genero + ", dia=" + dia + ", mes=" + mes + ", anyo=" + anyo
 				+ ", fecha=" + fecha + ", generoSecundario=" + generoSecundario + ", rating=" + rating + ", director="
 				+ director + ", actor=" + actor + "]";
