@@ -22,6 +22,6 @@ public class VentanaCine {
 			ventanaPrincipal.setVisible(true);
 		}
 
-	}
-
 }
+
+
