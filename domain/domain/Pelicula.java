@@ -1,31 +1,38 @@
 package domain;
 
+import java.time.LocalDate;
+
 public class Pelicula extends Director {
 	
 	public enum Genero {
 		ACCION, COMEDIA, TERROR, CIENCIA_FICCION, FANTASIA, ROMANCE, DRAMA, SUSPENSO,AVENTURA;
 	}
 	
-	private String nombre;
+	private int codigoPelicula;
+	private String sinopsis;
+	private String nombrePeli;
 	private double duracion; // En horas
 	private Genero genero;
+	private LocalDate fecha;
+	private Genero generoSecundario;
 	private int rating; // Numero de estrellas
-	private Director director;
+	protected Director director;
+	protected Actor actor; 
 	
-	public Pelicula(String nombre, double duracion, Genero genero, int rating) {
-		super();
-		this.nombre = nombre;
+	public Pelicula(String nombrePeli, double duracion, Genero genero, int rating) {
+		super(int codigoDir, String nombreDir, String apellidos, String pais);
+		this.nombrePeli = nombrePeli;
 		this.duracion = duracion;
 		this.genero = genero;
 		this.rating = rating;
 	}
 
 	public String getNombre() {
-		return nombre;
+		return nombrePeli;
 	}
 
-	public void setNombre(String nombre) {
-		this.nombre = nombre;
+	public void setNombre(String nombrePeli) {
+		this.nombrePeli = nombrePeli;
 	}
 
 	public double getDuracion() {
@@ -54,7 +61,7 @@ public class Pelicula extends Director {
 
 	@Override
 	public String toString() {
-		return "Pelicula [nombre=" + nombre + ", duracion=" + duracion + ", genero=" + genero + ", rating=" + rating
+		return "Pelicula [nombrePeli=" + nombrePeli  + ", duracion=" + duracion + ", genero=" + genero + ", rating=" + rating
 				+ "]";
 	}
 	
