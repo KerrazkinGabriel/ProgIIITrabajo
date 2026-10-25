@@ -1,18 +1,24 @@
 package domain;
 
-//Metodo dia del espectador (miercoles)!!
-public class Entrada {
+import java.time.DayOfWeek;
+import java.time.LocalDate;
 
+public class Entrada {	
 	// Descuento para usuarios registrados
 	public static final double descuentoReg = 0.10; // static final, esta variable solo tiene un solo valor asignado, no
 													// varía.
 
+	// Descuento miercoles, día del espectador
+	public static final double descuentoDiaEspectador = 0.20;
+
 	private TipoEntrada tipo;
 	private boolean userRegistraso;
+	private LocalDate fecha;
 
-	public Entrada(TipoEntrada tipo, boolean userRegistrado) {
+	public Entrada(TipoEntrada tipo, boolean userRegistrado, LocalDate fecha) {
 		this.tipo = tipo;
 		this.userRegistraso = userRegistrado;
+		this.fecha = fecha;
 	}
 
 	public TipoEntrada getTipo() {
@@ -31,10 +37,18 @@ public class Entrada {
 		this.userRegistraso = userRegistraso;
 	}
 
+	public LocalDate getFecha() {
+		return fecha;
+	}
+
+	public boolean isDiaEspectador() {
+		return fecha.getDayOfWeek() == DayOfWeek.WEDNESDAY;
+	}
+
 	@Override
 	public String toString() {
-		return "Entrada [tipo=" + tipo + ", precio final: " + getPrecioFinal() + "," + " userRegistraso="
-				+ userRegistraso + "]";
+		return "Entrada[ tipo: " + tipo + ", usuario registrado: " + userRegistraso + ", fecha: " + fecha
+				+ ", precio final: " + getPrecioFinal() + "€" + "]";
 	}
 
 	// Método precio base de las entradas
@@ -48,7 +62,7 @@ public class Entrada {
 			return 6.00;
 		} else if (tipo == TipoEntrada.NIÑO) {
 			return 5.00;
-		} else if (tipo == TipoEntrada.VIP) {
+		} else if (tipo == TipoEntrada.VIP) { 
 			return 9.50;
 		}
 		return 0;
@@ -60,6 +74,9 @@ public class Entrada {
 		double precio = getPrecioBase();
 		if (userRegistraso) {
 			precio = precio * (1 - descuentoReg);
+		}
+		if (isDiaEspectador()) {
+			precio = precio * (1 - descuentoDiaEspectador);
 		}
 		return precio;
 	}
