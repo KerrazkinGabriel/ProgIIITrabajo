@@ -3,9 +3,7 @@ package main;
 import gui.VentanaPrincipal;
 
 public class Main {
-	
-	
-	private void Main() {
+	public static void Main() {
 		new VentanaPrincipal();
 	}
 }

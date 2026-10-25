@@ -118,6 +118,14 @@ public class Sala {
 		return columna;
 		
 	}
+	public HashMap<TipoAsiento,Integer> capacidadMax(Asiento asientos){
+		HashMap<TipoAsiento, Integer> result = new HashMap<TipoAsiento, Integer>();
+		for (Asiento asiento : this.asientos) {
+			if (result.containsKey(asiento.ge)
+		}
+		return null;
+		
+	}
 
     
 }
