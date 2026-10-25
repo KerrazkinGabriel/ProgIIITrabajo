@@ -1,6 +1,6 @@
 package domain;
 
-public class Pelicula {
+public class Pelicula extends Director {
 	
 	public enum Genero {
 		ACCION, COMEDIA, TERROR, CIENCIA_FICCION, FANTASIA, ROMANCE, DRAMA, SUSPENSO,AVENTURA;
@@ -10,6 +10,7 @@ public class Pelicula {
 	private double duracion; // En horas
 	private Genero genero;
 	private int rating; // Numero de estrellas
+	private Director director;
 	
 	public Pelicula(String nombre, double duracion, Genero genero, int rating) {
 		super();
