@@ -133,6 +133,17 @@ public class Sala {
 		
 	}
 	
+	public Asiento obtenerAsFyC(Integer f,Integer c) {
+		Asiento a = null;
+		for (Asiento asiento : asientos) {
+			if(f==asiento.getFila() && c==asiento.getColumna()) {
+				a = asiento;
+			}
+		}
+		return a;
+		
+	}
+	
 	public Integer capMax(Asiento a) {
 		int capMax = asientosPorTipo(a).size();
 		return capMax;
