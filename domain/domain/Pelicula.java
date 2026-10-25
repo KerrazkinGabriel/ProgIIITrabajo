@@ -13,18 +13,65 @@ public class Pelicula extends Director {
 	private String nombrePeli;
 	private double duracion; // En horas
 	private Genero genero;
-	private LocalDate fecha;
 	private Genero generoSecundario;
+	private int dia;
+	private int mes;
+	private int anyo;
+	private LocalDate fecha; // Utiliza los campos dia, mes y año
 	private int rating; // Numero de estrellas
 	protected Director director;
 	protected Actor actor; 
 	
-	public Pelicula(String nombrePeli, double duracion, Genero genero, int rating) {
+	public Pelicula(int codigoPeli, String sinopsis, String nombrePeli, double duracion, Genero genero,Genero generoSecundario, int rating) {
 		super(int codigoDir, String nombreDir, String apellidos, String pais);
+		this.codigoDir = codigoDir;
+		this.sinopsis = sinopsis;
 		this.nombrePeli = nombrePeli;
 		this.duracion = duracion;
 		this.genero = genero;
 		this.rating = rating;
+		this.fecha = LocalDate.of(anyo,mes,dia);
+	}
+
+	
+	public int getCodigoPelicula() {
+		return codigoPelicula;
+	}
+
+	public void setCodigoPelicula(int codigoPelicula) {
+		this.codigoPelicula = codigoPelicula;
+	}
+
+	public String getSinopsis() {
+		return sinopsis;
+	}
+
+	public void setSinopsis(String sinopsis) {
+		this.sinopsis = sinopsis;
+	}
+
+	public LocalDate getFecha() {
+		return fecha;
+	}
+
+	public void setFecha(LocalDate fecha) {
+		this.fecha = fecha;
+	}
+
+	public Genero getGeneroSecundario() {
+		return generoSecundario;
+	}
+
+	public void setGeneroSecundario(Genero generoSecundario) {
+		this.generoSecundario = generoSecundario;
+	}
+
+	public Director getDirector() {
+		return director;
+	}
+
+	public void setDirector(Director director) {
+		this.director = director;
 	}
 
 	public String getNombre() {
@@ -61,8 +108,10 @@ public class Pelicula extends Director {
 
 	@Override
 	public String toString() {
-		return "Pelicula [nombrePeli=" + nombrePeli  + ", duracion=" + duracion + ", genero=" + genero + ", rating=" + rating
-				+ "]";
+		return "Pelicula [codigoPelicula=" + codigoPelicula + ", sinopsis=" + sinopsis + ", nombrePeli=" + nombrePeli
+				+ ", duracion=" + duracion + ", genero=" + genero + ", dia=" + dia + ", mes=" + mes + ", anyo=" + anyo
+				+ ", fecha=" + fecha + ", generoSecundario=" + generoSecundario + ", rating=" + rating + ", director="
+				+ director + ", actor=" + actor + "]";
 	}
 	
 	
