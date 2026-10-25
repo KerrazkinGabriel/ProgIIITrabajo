@@ -2,7 +2,7 @@ package domain;
 
 import java.time.LocalDate;
 
-public class Pelicula extends Persona {
+public class Pelicula {
 	
 	public enum Genero {
 		ACCION, COMEDIA, TERROR, CIENCIA_FICCION, FANTASIA, ROMANCE, DRAMA, SUSPENSO,AVENTURA;
@@ -22,18 +22,24 @@ public class Pelicula extends Persona {
 	protected Director director;
 	protected Actor actor; 
 	
-	public Pelicula(int codigoPeli, String sinopsis, String nombrePeli, double duracion, Genero genero, Genero generoSecundario, int rating, LocalDate fecha) {
-		super(int codigoDir, String nombreDir, String apellidos, String pais);
+	public Pelicula(int codigoPeli, String sinopsis, String nombrePeli, double duracion, Genero genero, Genero generoSecundario, int rating, LocalDate fecha, Director director, Actor actor) {
+		super();
 		this.codigoPeli = codigoPeli;
 		this.sinopsis = sinopsis;
 		this.nombrePeli = nombrePeli;
 		this.duracion = duracion;
-		this.genero = getGenero();
-		this.generoSecundario = getGeneroSecundario();
+		this.genero = genero;
+		this.generoSecundario = generoSecundario;
 		this.rating = rating;
-		this.fecha = LocalDate.of(anyo,mes,dia);
+		this.actor = actor;
+		this.director = director;
+		this.fecha = fecha;
+		if (fecha != null) {
+			this.dia = fecha.getDayOfMonth();
+			this.mes = fecha.getMonthValue();
+			this.anyo = fecha.getYear();
+		}
 	}
-
 	
 	public int getCodigoPeli() {
 		return codigoPeli;
@@ -107,15 +113,41 @@ public class Pelicula extends Persona {
 		this.rating = rating;
 	}
 
+	public String getNombrePeli() {
+		return nombrePeli;
+	}
+	
+	public void setNombrePeli(String nombrePeli) {
+		this.nombrePeli = nombrePeli;
+	}
+
+	public Actor getActor() {
+		return actor;
+	}
+
+	public void setActor(Actor actor) {
+		this.actor = actor;
+	}
+
+	public int getDia() {
+		return dia;
+	}
+
+	public int getMes() {
+		return mes;
+	}
+
+	public int getAnyo() {
+		return anyo;
+	}
+
 	@Override
 	public String toString() {
 		return "Pelicula [codigoPeli=" + codigoPeli + ", sinopsis=" + sinopsis + ", nombrePeli=" + nombrePeli
-				+ ", duracion=" + duracion + ", genero=" + genero + ", dia=" + dia + ", mes=" + mes + ", anyo=" + anyo
-				+ ", fecha=" + fecha + ", generoSecundario=" + generoSecundario + ", rating=" + rating + ", director="
+				+ ", duracion=" + duracion + ", genero=" + genero + ", generoSecundario=" + generoSecundario + ", dia="
+				+ dia + ", mes=" + mes + ", anyo=" + anyo + ", fecha=" + fecha + ", rating=" + rating + ", director="
 				+ director + ", actor=" + actor + "]";
-	}
-	
-	
+	}	
 	
 	
 }

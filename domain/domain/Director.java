@@ -2,11 +2,13 @@ package domain;
 
 public class Director extends Persona {
 	
+	private static int contadorDir = 0;
+	
 	protected String codigoDir;
 	protected String pais;
 	
 	public Director(String codigoDir, String nombre, String apellidos, String pais) {
-		super();
+		super(nombre,apellidos);
 		this.codigoDir = codigoDir;
 		this.pais = pais;
 	}
@@ -19,8 +21,13 @@ public class Director extends Persona {
 	}
 	@Override
 	public String toString() {
-		return "Director [codigoDir=" + codigoDir + ", nombreDir=" + nombreDir + ", apellidos=" + apellidos + ", pais="
+		return "Director [codigoDir=" + codigoDir + ", nombre=" + nombre + ", apellidos=" + apellidos + ", pais="
 				+ pais + "]";
+	}
+	@Override
+	public String generarCodigo() {
+		// TODO Auto-generated method stub
+		return "D" + contadorDir++;
 	}
 
 
