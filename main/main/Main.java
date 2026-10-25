@@ -1,9 +1,17 @@
 package main;
 
-import gui.VentanaPrincipal;
+import javax.swing.SwingUtilities;
+import gui.VentanaCine;
 
 public class Main {
-	public static void Main() {
-		new VentanaPrincipal();
-	}
+    
+    public static void main(String[] args) {
+        SwingUtilities.invokeLater(new Runnable() {
+            @Override
+            public void run() {
+                VentanaCine ventana = new VentanaCine();
+                ventana.setVisible(true);
+            }
+        });
+    }
 }
