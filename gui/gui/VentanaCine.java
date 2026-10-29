@@ -2,6 +2,9 @@ package gui;
 
 import java.awt.Color;
 import java.awt.Image;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -13,7 +16,17 @@ public class VentanaCine extends JFrame {
 	private JButton izq;
 	private JButton dch;
 	private JLabel imagen;
+	
+	private int indiceActual = 0; //Indice para pasar las imagenes
 
+	//Imagenes
+	private String [] rutasImagenes = { 
+			"/hero_banner_1940x960_sentido_y_sensibilidad.jpg", 
+			"/hero_banner_1940x960-clayface.jpg",
+			"/hero-banner-dune-parte-tres-va.jpg",
+			"/hero-banner-la-bola-negra.jpg"
+	};
+	
 	public VentanaCine() {
 		setTitle("CineDeusto");
 		setSize(900, 700);
@@ -25,26 +38,48 @@ public class VentanaCine extends JFrame {
 		izq = new JButton("←"); //Boton para pasar imagenes a la izq 
 		izq.setBounds(30, 300, 60, 40);
 		
+		izq.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				indiceActual --;
+				if (indiceActual < 0) {
+					indiceActual = rutasImagenes.length -1;
+				}
+				actualizarImagen();
+			}
+		});
+		
 		dch = new JButton("→"); //Boton para pasar imagenes a la dch 
 		dch.setBounds(795, 300, 60, 40);
 		
+		dch.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				indiceActual ++;
+				if (indiceActual >= rutasImagenes.length) {
+					indiceActual = 0;
+				}
+				actualizarImagen();
+			}
+		}); 
+
 		imagen = new JLabel();
 		imagen.setBounds(120, 50, 650, 550);
 		
-		//Imagenes
-		String ruta1 = "/hero_banner_1940x960_sentido_y_sensibilidad.jpg";
-		String ruta2 = "/hero_banner_1940x960-clayface.jpg";
-		String ruta3 = "/hero-banner-dune-parte-tres-va.jpg";
-		String ruta4 = "/hero-banner-la-bola-negra.jpg";
-		
-		ImageIcon bannerOriginal = new ImageIcon(getClass().getResource(ruta1));
-		Image imgEscalada = bannerOriginal.getImage().getScaledInstance(650, 550, Image.SCALE_SMOOTH);
-		imagen.setIcon(new ImageIcon(imgEscalada));
+		add(izq);
+		add(dch);
+		add(imagen);
 
-			add(izq);
-			add(dch);
-			add(imagen);
 		}
+		private void actualizarImagen() {
+			ImageIcon ImagenOriginal = new ImageIcon(getClass().getResource(rutasImagenes[indiceActual]));
+			Image ImageneEscala = ImagenOriginal.getImage().getScaledInstance(650, 550, Image.SCALE_SMOOTH);
+			imagen.setIcon(new ImageIcon(ImageneEscala));
+		
+		}
+	
 	}
 
 
