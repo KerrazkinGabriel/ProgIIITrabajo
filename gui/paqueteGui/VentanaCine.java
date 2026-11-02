@@ -1,14 +1,14 @@
-package gui;
+package paqueteGui;
 
 import java.awt.Color;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.SwingUtilities;
 
 public class VentanaCine extends JFrame {		
 	private static final long serialVersionUID = 1L;
@@ -21,10 +21,10 @@ public class VentanaCine extends JFrame {
 
 	//Imagenes
 	private String [] rutasImagenes = { 
-			"/hero_banner_1940x960_sentido_y_sensibilidad.jpg", 
-			"/hero_banner_1940x960-clayface.jpg",
-			"/hero-banner-dune-parte-tres-va.jpg",
-			"/hero-banner-la-bola-negra.jpg"
+			"/resource/dune3.png",
+			"/resource/laBolaNegra.png",
+			"/resource/sentidoYSensibilidad.png",
+			"/resource/clayface.png"
 	};
 	
 	public VentanaCine() {
@@ -71,13 +71,28 @@ public class VentanaCine extends JFrame {
 		add(izq);
 		add(dch);
 		add(imagen);
-
+		
+		actualizarImagen();
+		
+		setVisible(true);
+		
 		}
 		private void actualizarImagen() {
 			ImageIcon ImagenOriginal = new ImageIcon(getClass().getResource(rutasImagenes[indiceActual]));
 			Image ImageneEscala = ImagenOriginal.getImage().getScaledInstance(650, 550, Image.SCALE_SMOOTH);
 			imagen.setIcon(new ImageIcon(ImageneEscala));
 		
+		}
+		
+		public static void main(String[] args) {
+			SwingUtilities.invokeLater(new Runnable() {
+				@Override
+				public void run() {
+					// TODO Auto-generated method stub
+					new VentanaCine();
+
+				}
+			});
 		}
 	
 	}

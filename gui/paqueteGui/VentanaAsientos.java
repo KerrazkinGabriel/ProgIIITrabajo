@@ -1,4 +1,5 @@
-	package gui;
+package paqueteGui;
+
 
 import java.awt.BorderLayout;
 import java.awt.GridLayout;
