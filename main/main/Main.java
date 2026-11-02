@@ -2,7 +2,7 @@ package main;
 
 import javax.swing.SwingUtilities;
 
-import paqueteGui.VentanaCine;
+import gui.VentanaCine;
 
 public class Main {
 	

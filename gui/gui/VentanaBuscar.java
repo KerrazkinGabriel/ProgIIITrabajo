@@ -1,4 +1,4 @@
-package paqueteGui;
+package gui;
 
 public class VentanaBuscar {
 
