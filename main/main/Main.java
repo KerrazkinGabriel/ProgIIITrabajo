@@ -9,3 +9,4 @@ import gui.VentanaCine;
 public class Main {
 	VentanaPrincipal vP = new VentanaPrincipal();
 }
+
