@@ -9,6 +9,8 @@ public class GestorUsuario {
 	// usuario, así evistamos dos usuarios con el correo repetido
 	private Map<String, Usuario> usuarios = new HashMap<String, Usuario>();
 
+	private String emailRecordado = ""; // Si el usuario marca recordar email
+
 	private String normCorreo(String email) {// Hacemos que el correo sea automaticamanete en mayusculas y sin espacios
 												// para evitar confusiones
 		return email.trim().toLowerCase();
@@ -38,7 +40,15 @@ public class GestorUsuario {
 		} else {
 			return null;
 		}
-		
+
+	}
+
+	public String getEmailRecordado() {
+		return emailRecordado;
+	}
+
+	public void setEmailRecordado(String emailRecordado) {
+		this.emailRecordado = emailRecordado;
 	}
 
 }
