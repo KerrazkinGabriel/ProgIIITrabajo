@@ -6,7 +6,7 @@ import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.TextField;
 import java.time.LocalDate;
-
+import domain.ValidadorDatos;
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -18,20 +18,21 @@ import javax.swing.JTextField;
 
 import domain.GestorUsuario;
 import domain.Usuario;
+import domain.ValidadorDatos;
 
 public class VentanaRegistro extends JFrame {
 
 	private GestorUsuario gestor;
 
-	private TextField emailtex = new TextField();
+	private JTextField emailtex = new JTextField();
 	private JTextField nombretex = new JTextField();
-	private TextField apellidostex = new TextField();
+	private JTextField apellidostex = new JTextField();
 	private JTextField diatext = new JTextField();
-	private TextField mestex = new TextField();
+	private JTextField mestex = new JTextField();
 	private JTextField aniotex = new JTextField();
-	private TextField telefonotex = new TextField();
+	private JTextField telefonotex = new JTextField();
 	private JTextField cinetex = new JTextField();
-	private TextField dnitex = new TextField();
+	private JTextField dnitex = new JTextField();
 	private JPasswordField contrasenatex = new JPasswordField();
 	private JButton btnCrear = new JButton("Crear Cuenta");
 
@@ -123,15 +124,15 @@ public class VentanaRegistro extends JFrame {
 			JOptionPane.showMessageDialog(this, "Rellena todos los campos obligatorios");
 			return;
 		}
-		if (!email.contains("@")) {
+		if (!ValidadorDatos.esEmailValido(email)) {
 			JOptionPane.showMessageDialog(this, "El email no es valido");
 			return;
 		}
-		if (telefono.length() != 9) {
+		if (!telefono.matches("[0-9]{9}")) {
 			JOptionPane.showMessageDialog(this, "El telefono debe tener 9 digitos");
 			return;
 		}
-		if (dni.length() != 9) {
+		if (!ValidadorDatos.esDniValido(dni)) {
 			JOptionPane.showMessageDialog(this, "El DNI debe tener 8 números y una letra");
 			return;
 		}
@@ -158,6 +159,7 @@ public class VentanaRegistro extends JFrame {
 		Usuario nuevo = new Usuario(email, nombre, apellidos, fecha, telefono, cine, dni, contrasena);
 		if (gestor.registrar(nuevo)) {
 			JOptionPane.showMessageDialog(this, "Cuenta creada correctamente");
+			dispose();
 		} else {
 			JOptionPane.showMessageDialog(this, "Ya existe una cuenta con este correo electrónico");
 		}

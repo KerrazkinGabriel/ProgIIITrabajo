@@ -137,6 +137,7 @@ public class VentanaLogin extends JFrame {
 					JOptionPane.showMessageDialog(this, "¡Bienvenido, " + user.getNombre() + "!");
 
 					dispose();
+					new VentanaPrincipal();
 
 				} else if (gestor.existeEmail(correo)) {
 					errorCon.setText("Error esa no es la contraseña. ¿Quieres recuperarla?");
