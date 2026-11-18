@@ -149,6 +149,10 @@ public class VentanaLogin extends JFrame {
 
 		recuperar.addActionListener(e -> recuperarContrasenha());
 
+		registro.addActionListener(e -> {
+			new VentanaRegistro(gestor).setVisible(true);
+		});
+
 	}
 
 	private void recuperarContrasenha() {
@@ -160,6 +164,10 @@ public class VentanaLogin extends JFrame {
 				JOptionPane.showMessageDialog(this, "Este correo no pertenece a ninguna cuenta");
 			}
 		}
+
 	}
 
+	public static void main(String[] args) {
+		new VentanaLogin(new GestorUsuario()).setVisible(true);
+	}
 }
