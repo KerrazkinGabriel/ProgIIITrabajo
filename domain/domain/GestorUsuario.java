@@ -1,5 +1,6 @@
 package domain;
 
+import java.time.LocalDate;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -41,6 +42,15 @@ public class GestorUsuario {
 			return null;
 		}
 
+	}
+
+	public boolean cambiarTipo(String email, TipoUsuario nuevoTipo) {
+		Usuario user = usuarios.get(normCorreo(email));
+		if (user == null) {
+			return false;
+		}
+		user.setTipo(nuevoTipo);
+		return true;
 	}
 
 	public String getEmailRecordado() {

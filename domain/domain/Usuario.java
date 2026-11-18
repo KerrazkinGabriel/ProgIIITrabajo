@@ -12,9 +12,15 @@ public class Usuario {
 	private String cinePreferido;
 	private String dni;
 	private String contrasena;
+	private TipoUsuario tipo;
 
 	public Usuario(String email, String nombre, String apellidos, LocalDate fechaNac, String telefono,
 			String cinePreferido, String dni, String contrasena) {
+		this(email, nombre, apellidos, fechaNac, telefono, cinePreferido, dni, contrasena, TipoUsuario.SOCIO);
+	}
+
+	public Usuario(String email, String nombre, String apellidos, LocalDate fechaNac, String telefono,
+			String cinePreferido, String dni, String contrasena, TipoUsuario tipo) {
 		super();
 		this.email = email;
 		this.nombre = nombre;
@@ -24,6 +30,7 @@ public class Usuario {
 		this.cinePreferido = cinePreferido;
 		this.dni = dni;
 		this.contrasena = contrasena;
+		this.tipo = tipo;
 	}
 
 	public String getEmail() {
@@ -82,13 +89,25 @@ public class Usuario {
 		this.dni = dni;
 	}
 
+	public TipoUsuario getTipo() {
+		return tipo;
+	}
+
+	public void setTipo(TipoUsuario tipo) {
+		this.tipo = tipo;
+	}
+
+	public boolean esAdmin() {
+		return tipo == TipoUsuario.ADMIN;
+	}
+
 	public boolean contraseñaCorrecta(String intento) {
 		return contrasena.equals(intento);
 	}
 
 	@Override
 	public String toString() {
-		return "Usuario [email=" + email + ", nombre=" + nombre + ", apellidos=" + apellidos + "]";
+		return "Usuario [email=" + email + ", nombre=" + nombre + ", apellidos=" + apellidos + " ,tipo=" + tipo + "]";
 	}
 
 }
