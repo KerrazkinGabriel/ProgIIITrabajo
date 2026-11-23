@@ -1,5 +1,5 @@
 package domain;
 
 public enum TipoEntrada {
-	ADULTO, JOVEN, ESTUDIANTE, NIÑO, VIP
+	ADULTO, JOVEN, ESTUDIANTE, NIÑO, VIP,DISCAPACITADO
 }
