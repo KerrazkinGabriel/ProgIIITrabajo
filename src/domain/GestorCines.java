@@ -2,11 +2,11 @@ package domain;
 
 import java.util.ArrayList;
 
-public class GestorCine {
+public class GestorCines {
 
 	private ArrayList<Cine> cines = new ArrayList<Cine>();
 
-	public GestorCine() {
+	public GestorCines() {
 		cines.add(new Cine("Cine Deusto", "Bilbao", "Avenida Universidades 6", "Miercoles 2x1"));
 		cines.add(new Cine("Cine Zubiarte", "Bilbao", "Plaza Euskadi", "Estudiantes -20%"));
 		cines.add(new Cine("Cine Donosti", "Donosti", "Paseo de la concha 2", "Jueves entradas a 5€"));
@@ -30,4 +30,17 @@ public class GestorCine {
 	}
 
 	// Devolvemos solo los cines de una zona:
+
+	public ArrayList<Cine> cinePorZona(String zona) {
+		ArrayList<Cine> resultado = new ArrayList<Cine>();
+		for (Cine c : cines) {
+			if (c.getZona().equals(zona)) {
+				resultado.add(c);
+			}
+		}
+		return resultado;
+	}
+	
+	
+	
 }
